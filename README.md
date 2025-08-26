@@ -29,7 +29,7 @@ pip install -r requirements.txt
 - [Chest X-Ray Tuberculosis dataset](https://doi.org/10.48550/arXiv.2403.07838)
 
 ## 🚀 Run the codes
-1. pretrain the feature extractor:
+1. Pretrain the feature extractor:
 ```
 CUDA_VISIBLE_DEVICES=0 python train_feature_extractor.py \
     --dataset='brain_tumor' \
@@ -41,7 +41,7 @@ CUDA_VISIBLE_DEVICES=0 python train_feature_extractor.py \
     --seed=66
 ```
 
-2. train the teacher model in the client side:
+2. Train the teacher model in the client side:
 ```
 CUDA_VISIBLE_DEVICES=0 python one-shot.py \
     --train_type='teacher' \
@@ -54,7 +54,7 @@ CUDA_VISIBLE_DEVICES=0 python one-shot.py \
     --seed=66
 ```
 
-3. train FG-RF in each client:
+3. Train FG-RF in each client:
 ```
 python train_FGRF.py \
     --dataset='brain_tumor' \
@@ -118,7 +118,7 @@ python server_generation.py \
     --client=2
 ```
 
-5. train Dual-Layer Knowledge Distillation in the server:
+5. Train Dual-Layer Knowledge Distillation in the server:
 ```
 CUDA_VISIBLE_DEVICES=0 python one-shot.py \
     --train_type='student' \
