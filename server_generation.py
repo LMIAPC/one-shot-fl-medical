@@ -1,6 +1,4 @@
 # Server image generation.
-import argparse
-import sys
 """This implementation is adapted from:
 # Author: [cloneofsimo]
 # Repository: https://github.com/cloneofsimo/minRF
@@ -8,6 +6,7 @@ import sys
 # Modifications: [We proposed Feature-Guided Rectified Flow Model to reduce privacy leakage.
 See more descriptions in our paper.]
 """
+import argparse
 import torch
 import os
 import torch.optim as optim
