@@ -18,7 +18,7 @@ import wandb
 
 if torch.cuda.is_available():
     print(f"CUDA is available. Device name: {torch.cuda.get_device_name(torch.cuda.current_device())}")
-    print(torch.cuda.current_device())  # 显示当前使用的 GPU 索引
+    print(torch.cuda.current_device())
 else:
     print("CUDA is not available.")
 
@@ -108,15 +108,15 @@ def kd_train_local(model, test_sets, epochs, save_path, num_users, args):
         # ### if train pictures
         # labels = client_datasets[i].tensors[1] # TB dataset
 
-        # indices = client_datasets[i].indices  # Subset 存储的是索引
+        # indices = client_datasets[i].indices
         # original_dataset = client_datasets[i].dataset
-        # while isinstance(original_dataset, Subset):  # 处理嵌套 Subset
+        # while isinstance(original_dataset, Subset):
         #     original_dataset = original_dataset.dataset
         #
         # labels = original_dataset.tensors[1][indices] # brain/HAM10000 dataset
 
         # labels = torch.tensor(labels)
-        # # 计算每个类别的样本数量
+        #
         # label_counts = torch.bincount(labels)
         # class_weights = 1.0 / label_counts.float()
         # sample_weights = class_weights[labels]
@@ -127,13 +127,13 @@ def kd_train_local(model, test_sets, epochs, save_path, num_users, args):
         #                            batch_size=args.batch_size,
         #                            sampler=sampler,
         #                            num_workers=4,
-        #                            worker_init_fn=seed_worker,  # 初始化 worker 随机性
-        #                            generator=generator  # 控制随机性
+        #                            worker_init_fn=seed_worker,
+        #                            generator=generator
         #                            )
 
         print(f'client {i} starts teacher model training!')
         for epoch in range(epochs):
-            # 训练阶段
+            # Model train
             model.train()
             running_loss = 0.0
             running_corrects = 0
@@ -410,14 +410,14 @@ if __name__ == '__main__':
         # load dataset
         if args.dataset == 'skin_cancer':
             transform = transforms.Compose([
-                transforms.Resize((224, 224)),  # 调整图像大小以匹配模型输入,原来是224
-                transforms.ToTensor(),  # 转换为张量
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
                 transforms.Normalize([0.5,0.5,0.5], [0.5,0.5,0.5])
             ])
         else:
             transform = transforms.Compose([
-                transforms.Resize((224, 224)),  # 调整图像大小以匹配模型输入,原来是224
-                transforms.ToTensor(),  # 转换为张量
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
                 transforms.Normalize(0.5, 0.5)
             ])
         _, test_sets = load_client_dataset(args, transform, transform)
@@ -435,8 +435,8 @@ if __name__ == '__main__':
 
         else:
             transform = transforms.Compose([
-                transforms.Resize((224, 224)),  # 调整图像大小以匹配模型输入,原来是224
-                transforms.ToTensor(),  # 转换为张量
+                transforms.Resize((224, 224)),
+                transforms.ToTensor(),
                 transforms.Normalize(0.5, 0.5)
             ])
 
