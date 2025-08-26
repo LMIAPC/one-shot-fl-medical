@@ -478,8 +478,7 @@ def load_client_dataset(args, train_transform, test_transform):
 def load_auxiliary_datasets(args):
     """
     if generated features are stored in pictures format, then using this function to load training datasets for
-    knowledge distillation. In our experiments, the generated brain tumor features are stored in pictures format,
-    which is used in subsequent knowledge distillation.
+    knowledge distillation.
     :param args:
     :return: train dataloader
     """
