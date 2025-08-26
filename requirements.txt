@@ -1,0 +1,13 @@
+matplotlib==3.10.3
+matplotlib-inline==0.1.7
+numpy==2.1.2
+opencv-python==4.11.0.86
+pandas==2.3.0
+pillow==11.0.0
+scikit-learn==1.7.0
+tensorboard==2.19.0
+tensorboard-data-server==0.7.2
+torch==2.6.0+cu126
+torchvision==0.21.0+cu126
+tqdm==4.67.1
+wandb==0.20.1
